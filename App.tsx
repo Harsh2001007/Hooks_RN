@@ -1,36 +1,24 @@
-import {StyleSheet, Text, View, SafeAreaView, Button} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import 'react-native-gesture-handler';
+import {StyleSheet, Text, View} from 'react-native';
+import React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import UseEffectScreen from './screens/UseEffectScreen';
+import MainScreen from './screens/MainScreen';
 
 export default function App() {
-  const [data, setData] = useState('');
-  const [key, setKey] = useState('');
-  const [count, setCount] = useState(0);
+  const Stack = createNativeStackNavigator();
 
-  useEffect(() => {
-    console.log('basic use of use effect');
-  }, [count]);
-
-  const dataHandler = () => {
-    setData('data state');
-    console.log('data clicked');
-  };
-
-  const keyHandler = () => {
-    setKey('key updated');
-    console.log('key clicked');
-  };
-
-  const countHandler = () => {
-    setCount(count + 1);
-  };
   return (
-    <SafeAreaView>
-      <Text>App</Text>
-      <Button title="Data" onPress={dataHandler} />
-      <Button title="Key" onPress={keyHandler} />
-      <Text>count :: {count}</Text>
-      <Button title="counter" onPress={countHandler} />
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+          headerBackTitleVisible: false,
+        }}>
+        <Stack.Screen name="main-screen" component={MainScreen} />
+        <Stack.Screen name="useeffect-screen" component={UseEffectScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
