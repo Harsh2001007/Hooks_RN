@@ -10,11 +10,15 @@ export default function MainScreen({navigation}) {
     navigation.navigate('useref-screen');
   };
 
+  const useContextHandler = () => {
+    navigation.navigate('usecontext-screen');
+  };
+
   return (
     <SafeAreaView>
       <Button title="useEffect-Hook" onPress={useEffectScreenHandler} />
       <Button title="useRef-Hook" onPress={useRefScreenHandler} />
-      <Button title="useContext-Hook" onPress={console.log('hello')} />
+      <Button title="useContext-Hook" onPress={useContextHandler} />
       <Button title="useReducer-Hook" onPress={console.log('hello')} />
     </SafeAreaView>
   );
