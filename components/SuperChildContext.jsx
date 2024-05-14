@@ -1,14 +1,13 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React, {useContext} from 'react';
 import {GlobalInfo} from '../screens/UseContextScreen';
-import SuperChildContext from './SuperChildContext';
 
-export default function ChildContext() {
-  const {contextData} = useContext(GlobalInfo);
+export default function SuperChildContext() {
+  const contextData = useContext(GlobalInfo);
+  console.log(contextData);
   return (
     <View>
-      <Text style={{color: contextData}}>ChildContext</Text>
-      <SuperChildContext />
+      <Text style={{color: contextData.contextData}}>SuperChildContext</Text>
     </View>
   );
 }
